@@ -9,10 +9,10 @@ if(NOT FORCE_BUILD_VENDOR_PKG)
   find_package(ignition-math6 QUIET)
 endif()
 
+set(IGNITION_MATH6_TARGET_VERSION "6.9.2")
+
 macro(build_ignition_math6)
   set(extra_cmake_args -DBUILD_TESTING=OFF)
-
-  set(IGNITION_MATH6_TARGET_VERSION "6.8.0")
 
   if(DEFINED CMAKE_BUILD_TYPE)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
@@ -76,7 +76,7 @@ macro(build_ignition_math6)
   )
 endmacro()
 
-if(NOT ignition-math6_FOUND OR "${ignition-math6_VERSION}" VERSION_LESS 6.7.0)
+if(NOT ignition-math6_FOUND OR "${ignition-math6_VERSION}" VERSION_LESS "${IGNITION_MATH6_TARGET_VERSION}")
   build_ignition_math6()
 endif()
 
