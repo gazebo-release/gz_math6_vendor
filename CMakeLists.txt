@@ -9,7 +9,7 @@ if(NOT FORCE_BUILD_VENDOR_PKG)
   find_package(ignition-math6 QUIET)
 endif()
 
-set(IGNITION_MATH6_TARGET_VERSION "6.12.0")
+set(IGNITION_MATH6_TARGET_VERSION "6.9.2")
 
 macro(build_ignition_math6)
   set(extra_cmake_args -DBUILD_TESTING=OFF)
