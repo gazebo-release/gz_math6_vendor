@@ -9,10 +9,15 @@ if(NOT FORCE_BUILD_VENDOR_PKG)
   find_package(ignition-math6 QUIET)
 endif()
 
-set(IGNITION_MATH6_TARGET_VERSION "6.9.2")
+set(IGNITION_MATH6_TARGET_VERSION "6.14.0")
 
 macro(build_ignition_math6)
-  set(extra_cmake_args -DBUILD_TESTING=OFF)
+  set(extra_cmake_args
+    -DBUILD_DOCS:BOOL=OFF
+    -DBUILD_TESTING:BOOL=OFF
+    -DSKIP_SWIG:BOOL=ON
+    -DSKIP_PYBIND11:BOOL=ON
+  )
 
   if(DEFINED CMAKE_BUILD_TYPE)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
@@ -61,9 +66,6 @@ macro(build_ignition_math6)
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
       ${extra_cmake_args}
-    PATCH_COMMAND
-      ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn
-        ${CMAKE_CURRENT_SOURCE_DIR}/suppress_optional_dependency_warnings.patch
   )
 
   # The external project will install to the build folder, but we'll install that on make install.
