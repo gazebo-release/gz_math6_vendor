@@ -14,6 +14,10 @@ set(IGNITION_MATH6_TARGET_VERSION "6.9.2")
 macro(build_ignition_math6)
   set(extra_cmake_args -DBUILD_TESTING=OFF)
 
+  if(DEFINED CMAKE_PREFIX_PATH)
+    list(APPEND extra_cmake_args "-DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
+  endif()
+
   if(DEFINED CMAKE_BUILD_TYPE)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
   endif()
