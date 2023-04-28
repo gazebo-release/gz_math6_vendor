@@ -2,6 +2,9 @@
 Changelog for package ignition_math6_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.3 (2023-04-25)
 ------------------
 * Forward CMAKE_PREFIX_PATH when building vendor package (`#8 <https://github.com/gazebo-release/gz_math6_vendor/issues/8>`_)
